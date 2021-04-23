@@ -1,0 +1,2063 @@
+{
+  "name": "AdventureWorks",
+  "compatibilityLevel": 1540,
+  "model": {
+    "culture": "en-US",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "Subcategory",
+        "isHidden": true,
+        "lineageTag": "c34ff48b-daba-4d70-8453-60c0b531fc3e",
+        "columns": [
+          {
+            "name": "ProductSubcategoryKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductSubcategoryKey",
+            "formatString": "0",
+            "lineageTag": "a6b94dec-45e4-4ce7-bb1b-472531cd0312",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "ProductCategoryKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductCategoryKey",
+            "formatString": "0",
+            "lineageTag": "517dda34-2a80-4282-9a26-9aa8841eb357",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Subcategory Name",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Subcategory Name",
+            "lineageTag": "06f57138-2434-44ab-a5e3-1479943b2a23",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Subcategory-8566ccd1-050b-4321-93ec-f27bc72dc1f8",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(csvfilename),[Delimiter=\",\", Columns=3, Encoding=1252, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductSubcategoryKey\", Int64.Type}, {\"ProductCategoryKey\", Int64.Type}, {\"EnglishProductSubcategoryName\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"EnglishProductSubcategoryName\", \"Subcategory Name\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_ChangedProperties",
+            "value": "[\"IsHidden\"]"
+          }
+        ]
+      },
+      {
+        "name": "Geography",
+        "lineageTag": "f0c7fb45-4c99-40a6-beb8-a6ffc978072b",
+        "columns": [
+          {
+            "name": "Geography Key",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Geography Key",
+            "formatString": "0",
+            "lineageTag": "64ead67c-9d8e-44ad-9add-fdfff1680d26",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "City",
+            "dataType": "string",
+            "sourceColumn": "City",
+            "lineageTag": "07bdc493-96a4-4785-b2c1-d6fdd7c06a1d",
+            "dataCategory": "City",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DataCategory\"]"
+              }
+            ]
+          },
+          {
+            "name": "StateProvinceCode",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "StateProvinceCode",
+            "lineageTag": "df440d6b-8c56-4046-8628-3769d863f1bc",
+            "dataCategory": "Uncategorized",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DataCategory\",\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "State Province",
+            "dataType": "string",
+            "sourceColumn": "State Province",
+            "lineageTag": "f8318920-e70f-4089-ae4f-185b522dbfb5",
+            "dataCategory": "StateOrProvince",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DataCategory\"]"
+              }
+            ]
+          },
+          {
+            "name": "Country",
+            "dataType": "string",
+            "sourceColumn": "Country",
+            "lineageTag": "1644185b-4b1e-4cc0-b722-c64fa2080fc5",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "name": "Postal Code",
+            "dataType": "string",
+            "sourceColumn": "Postal Code",
+            "lineageTag": "6bf4b32f-a194-49bd-be79-83b18009a0e7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Geography-a46e4687-1587-4fe6-a284-382852dd68e4",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Web.BrowserContents(\"https://guyinacube.com/geography-sample/\"),",
+                "    #\"Extracted Table From Html\" = Html.Table(Source, {{\"Column1\", \"TABLE > * > TR > TH[colspan=\"\"6\"\"]:not([rowspan]):nth-child(1):nth-last-child(1), TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7)\"}, {\"Column2\", \"TABLE > * > TR > TH[colspan=\"\"6\"\"]:not([rowspan]):nth-child(1):nth-last-child(1), TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6)\"}, {\"Column3\", \"TABLE > * > TR > TH[colspan=\"\"6\"\"]:not([rowspan]):nth-child(1):nth-last-child(1), TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5)\"}, {\"Column4\", \"TABLE > * > TR > TH[colspan=\"\"6\"\"]:not([rowspan]):nth-child(1):nth-last-child(1), TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4)\"}, {\"Column5\", \"TABLE > * > TR > TH[colspan=\"\"6\"\"]:not([rowspan]):nth-child(1):nth-last-child(1), TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(3), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(3)\"}, {\"Column6\", \"TABLE > * > TR > TH[colspan=\"\"6\"\"]:not([rowspan]):nth-child(1):nth-last-child(1), TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(2), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(2)\"}, {\"Column7\", \"TABLE > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(2) + TH:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(1), TABLE > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(2) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(1)\"}}, [RowSelector=\"TABLE > * > TR\"]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Extracted Table From Html\",{{\"Column1\", type text}, {\"Column2\", type text}, {\"Column3\", type text}, {\"Column4\", type text}, {\"Column5\", type text}, {\"Column6\", type text}, {\"Column7\", type text}}),",
+                "    #\"Removed Top Rows\" = Table.Skip(#\"Changed Type\",1),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Removed Top Rows\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Geography Key\", Int64.Type}, {\"City\", type text}, {\"StateProvinceCode\", type text}, {\"StateProvinceCodeName\", type text}, {\"CountryRegionName\", type text}, {\"PostalCode\", type text}, {\"SalesTerritoryKey\", Int64.Type}}),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Changed Type1\",{\"SalesTerritoryKey\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed Columns\",{{\"CountryRegionName\", \"Country\"}, {\"PostalCode\", \"Postal Code\"}, {\"StateProvinceCodeName\", \"State Province\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          }
+        ]
+      },
+      {
+        "name": "Customer",
+        "lineageTag": "af87613d-e89f-4941-bf07-c7198960753e",
+        "columns": [
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "formatString": "0",
+            "lineageTag": "4e406586-dcef-4fac-b22a-cb7fbbecd4fd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "First Name",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "First Name",
+            "lineageTag": "f1a1b116-7327-4137-b015-6d003dd07dc2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Middle Name",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Middle Name",
+            "lineageTag": "eeb56de7-d8a8-4c89-bbaa-a32c9a4c47ea",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Last Name",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Last Name",
+            "lineageTag": "d2dd1a02-1755-4812-b5df-ec1beea4ead6",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "BirthDate",
+            "dataType": "dateTime",
+            "sourceColumn": "BirthDate",
+            "formatString": "dddd\\, mmmm d\\, yyyy",
+            "lineageTag": "c09bd794-d360-4e9c-987f-b54127282d4d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongDate\" FormatString=\"dddd, MMMM d, yyyy\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress",
+            "lineageTag": "8a321b31-2354-437c-9de5-114822afffe4",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "name": "GeographyKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "GeographyKey",
+            "formatString": "0",
+            "lineageTag": "e1e47ad3-0f30-4913-9167-f9b86cc85145",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Full Name",
+            "dataType": "string",
+            "sourceColumn": "Full Name",
+            "lineageTag": "075ffa6b-0ea9-46fd-8c0a-e64bc32dbaab",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "name": "Customer Gender",
+            "dataType": "string",
+            "sourceColumn": "Customer Gender",
+            "lineageTag": "59c1dd80-553e-4c04-a4bb-5cb9963ec122",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Customer-0b2563b2-bf23-4b85-8cb7-31164203f10b",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(excelfilename), null, true),",
+                "    pbi_Customer_Sheet = Source{[Item=\"pbi_Customer\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(pbi_Customer_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"CustomerKey\", Int64.Type}, {\"FirstName\", type text}, {\"MiddleName\", type text}, {\"LastName\", type text}, {\"BirthDate\", type date}, {\"Gender\", type text}, {\"EmailAddress\", type text}, {\"GeographyKey\", Int64.Type}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"FirstName\", \"First Name\"}, {\"MiddleName\", \"Middle Name\"}, {\"LastName\", \"Last Name\"}}),",
+                "    #\"Inserted Merged Column\" = Table.AddColumn(#\"Renamed Columns\", \"Merged\", each Text.Combine({[First Name], \" \", [Middle Name], \" \", [Last Name]}), type text),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Inserted Merged Column\",{{\"Merged\", \"Full Name\"}}),",
+                "    #\"Replaced Value\" = Table.ReplaceValue(#\"Renamed Columns1\",\" NULL \",\" \",Replacer.ReplaceText,{\"Full Name\"}),",
+                "    #\"Added Conditional Column\" = Table.AddColumn(#\"Replaced Value\", \"Customer Gender\", each if [Gender] = \"F\" then \"Female\" else if [Gender] = \"M\" then \"Male\" else \"Not Provided\"),",
+                "    #\"Removed Columns\" = Table.RemoveColumns(#\"Added Conditional Column\",{\"Gender\"})",
+                "in",
+                "    #\"Removed Columns\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Employee",
+        "lineageTag": "63d92364-bb16-4551-afcc-e470e8de6d1b",
+        "columns": [
+          {
+            "name": "EmployeeKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "EmployeeKey",
+            "formatString": "0",
+            "lineageTag": "f01d55d8-3228-42b4-a476-5956f1115f93",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "ParentEmployeeKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ParentEmployeeKey",
+            "lineageTag": "fe2fc6fe-4720-4499-9a1b-e6bbf5cddc43",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalesTerritoryKey",
+            "formatString": "0",
+            "lineageTag": "441c36e2-493f-443f-a50c-15bda6c15285",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "First Name",
+            "dataType": "string",
+            "sourceColumn": "First Name",
+            "lineageTag": "57dc3f15-81cc-486d-a607-b505bc37d11a",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DisplayFolder\"]"
+              }
+            ]
+          },
+          {
+            "name": "Last Name",
+            "dataType": "string",
+            "sourceColumn": "Last Name",
+            "lineageTag": "7611d30e-b691-490a-9a1a-8acf275047fa",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DisplayFolder\"]"
+              }
+            ]
+          },
+          {
+            "name": "Middle Name",
+            "dataType": "string",
+            "sourceColumn": "Middle Name",
+            "lineageTag": "14a4c543-e684-4a62-b475-7838a85e7913",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DisplayFolder\"]"
+              }
+            ]
+          },
+          {
+            "name": "Title",
+            "dataType": "string",
+            "sourceColumn": "Title",
+            "lineageTag": "d33a23ba-7f8e-4266-840e-b253d4c3c2ba",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "name": "LoginID",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "LoginID",
+            "lineageTag": "9c77b078-1cdb-4785-93ac-df6041febf9c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "EmailAddress",
+            "dataType": "string",
+            "sourceColumn": "EmailAddress",
+            "lineageTag": "d1c5a1cd-5d69-4631-b9f1-5d40f597b8ed",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Employee-4f2c7ca3-5897-4479-af3b-c436e4398b2e",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(excelfilename), null, true),",
+                "    pbi_Employee_Sheet = Source{[Item=\"pbi_Employee\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(pbi_Employee_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"EmployeeKey\", Int64.Type}, {\"ParentEmployeeKey\", type any}, {\"SalesTerritoryKey\", Int64.Type}, {\"FirstName\", type text}, {\"LastName\", type text}, {\"MiddleName\", type text}, {\"Title\", type text}, {\"LoginID\", type text}, {\"EmailAddress\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"FirstName\", \"First Name\"}, {\"LastName\", \"Last Name\"}, {\"MiddleName\", \"Middle Name\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Internet Sales",
+        "lineageTag": "78519f60-4a09-4863-b4e3-96788132ec4e",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductKey",
+            "formatString": "0",
+            "lineageTag": "4c7db9f2-5fe0-4883-a9e1-d6f9b87d5759",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalesTerritoryKey",
+            "formatString": "0",
+            "lineageTag": "51bb5259-d181-49f6-8a26-9204c5d69547",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "CustomerKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "CustomerKey",
+            "formatString": "0",
+            "lineageTag": "4adda01e-dcdf-4521-b0b6-372bc237ef18",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Order Date",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Order Date",
+            "formatString": "dddd\\, mmmm d\\, yyyy",
+            "lineageTag": "7bae9b47-21cb-40b2-ad52-214f376cbf57",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongDate\" FormatString=\"dddd, MMMM d, yyyy\" /></DateTimes></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Ship Date",
+            "dataType": "dateTime",
+            "isHidden": true,
+            "sourceColumn": "Ship Date",
+            "formatString": "dddd\\, mmmm d\\, yyyy",
+            "lineageTag": "b8ba5acf-2565-4ad7-bd63-ef4d486f4b88",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongDate\" FormatString=\"dddd, MMMM d, yyyy\" /></DateTimes></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Order Quantity",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "Order Quantity",
+            "formatString": "0",
+            "lineageTag": "4dc73e7c-3f98-4c3a-a3a1-11ac1b729c07",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Sales Amount",
+            "dataType": "decimal",
+            "isHidden": true,
+            "sourceColumn": "Sales Amount",
+            "lineageTag": "91183d1c-129b-44a0-b644-36cf89ec53cb",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Tax Amount",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Tax Amount",
+            "lineageTag": "6403e5e6-364d-48eb-9bc8-a35e744a6337",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"General\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Freight",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "Freight",
+            "lineageTag": "c0563dbb-def1-41cb-b104-dd4a02b63549",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "User"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Custom\" Custom=\"\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\",\"IsHidden\"]"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Internet Sales-cd7d2e20-5bec-43be-a662-893abfa1518e",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(excelfilename), null, true),",
+                "    pbi_InternetSales_Sheet = Source{[Item=\"pbi_InternetSales\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(pbi_InternetSales_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductKey\", Int64.Type}, {\"SalesTerritoryKey\", Int64.Type}, {\"CustomerKey\", Int64.Type}, {\"OrderDate\", type date}, {\"ShipDate\", type date}, {\"OrderQuantity\", Int64.Type}, {\"SalesAmount\", Currency.Type}, {\"TaxAmt\", type number}, {\"Freight\", type number}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"OrderDate\", \"Order Date\"}, {\"ShipDate\", \"Ship Date\"}, {\"OrderQuantity\", \"Order Quantity\"}, {\"SalesAmount\", \"Sales Amount\"}, {\"TaxAmt\", \"Tax Amount\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Total Sales Amount",
+            "expression": "SUMX('Internet Sales', 'Internet Sales'[Freight]+'Internet Sales'[Tax Amount]+'Internet Sales'[Sales Amount])",
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "6bb9518a-6cc5-4ac3-a3e8-076d86b9d2d3",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"CurrencyCustom\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"1033\" DisplayName=\"$ English (United States)\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\",\"DisplayFolder\"]"
+              }
+            ]
+          },
+          {
+            "name": "Total Sales YTD",
+            "expression": [
+              "",
+              "CALCULATE([Total Sales Amount], DATESYTD('Calendar'[Date]))"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "da0b0ed8-2ba2-41aa-aba0-790b5d533abe",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"CurrencyCustom\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"0\" DisplayName=\"Currency General\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DisplayFolder\",\"FormatString\"]"
+              }
+            ]
+          },
+          {
+            "name": "Total Shipped Sales Amount",
+            "expression": [
+              "",
+              "CALCULATE([Total Sales Amount],",
+              "USERELATIONSHIP('Internet Sales'[Ship Date], 'Calendar'[Date]))"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "a389fcbd-75d6-481e-a6b3-dde9869ded41",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"CurrencyCustom\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"0\" DisplayName=\"Currency General\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\",\"DisplayFolder\"]"
+              }
+            ]
+          },
+          {
+            "name": "Tooltip Value Color",
+            "expression": [
+              "",
+              "IF (",
+              "    (CALCULATE ( [Total Sales Amount], ALL ( 'Calendar' ) ) / 162.5) > [Total Sales Amount],",
+              "    2,",
+              "    1",
+              ")"
+            ],
+            "formatString": "0",
+            "lineageTag": "0de04468-c36e-4ddd-9644-11bbe49ab67e",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          },
+          {
+            "name": "Head Pic",
+            "expression": [
+              "",
+              "IF (",
+              "    [Tooltip Value Color] = 1,",
+              "    \"https://guyinacube.com/wp-content/uploads/2021/03/Adam.png\",",
+              "    \"https://guyinacube.com/wp-content/uploads/2021/03/Patrick.png\"",
+              ")",
+              ""
+            ],
+            "lineageTag": "0dc2828f-9454-40ac-8fed-b9979232234b",
+            "dataCategory": "ImageUrl",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DataCategory\"]"
+              }
+            ]
+          },
+          {
+            "name": "PoP Sales Change",
+            "expression": [
+              "",
+              "VAR currentsales = [Total Sales Amount]",
+              "VAR pysales = [Total Sales SPLY]",
+              "RETURN",
+              "    IF ( AND ( currentsales <> 0, pysales <> 0 ), currentsales - pysales )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "576f570f-85ef-4d79-82b1-7faa2f7248b4",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"CurrencyCustom\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"0\" DisplayName=\"Currency General\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\"]"
+              }
+            ]
+          },
+          {
+            "name": "PoP % Change",
+            "expression": [
+              "",
+              "DIVIDE ( [PoP Sales Change], [Total Sales SPLY], BLANK () )"
+            ],
+            "formatString": "0.00%;-0.00%;0.00%",
+            "lineageTag": "3328a695-996d-443b-b478-ff316028453b",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Percentage\" Accuracy=\"2\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\"]"
+              }
+            ]
+          },
+          {
+            "name": "Total Freight",
+            "expression": [
+              "",
+              "SUM ( 'Internet Sales'[Freight] )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "3a476f6e-4d7c-41fd-a768-ead33102b2dc",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"CurrencyCustom\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"0\" DisplayName=\"Currency General\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\"]"
+              }
+            ]
+          },
+          {
+            "name": "Total Quantity",
+            "expression": [
+              "",
+              "SUM ( 'Internet Sales'[Order Quantity] )"
+            ],
+            "formatString": "#,0",
+            "lineageTag": "7718976f-0887-46b9-879d-e344bd924474",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" ThousandSeparator=\"True\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\"]"
+              }
+            ]
+          },
+          {
+            "name": "Total Sales SPLY",
+            "expression": [
+              "",
+              "VAR _hassalesdata =",
+              "    NOT ( ISBLANK ( [Total Sales Amount] ) )",
+              "RETURN",
+              "    IF (",
+              "        _hassalesdata,",
+              "        CALCULATE ( [Total Sales Amount], SAMEPERIODLASTYEAR ( 'Calendar'[Date] ) ),",
+              "        BLANK ()",
+              "    )"
+            ],
+            "formatString": "\\$#,0.00;(\\$#,0.00);\\$#,0.00",
+            "lineageTag": "bd1cb2ce-80b3-4b35-9a2a-4a8c1592d991",
+            "annotations": [
+              {
+                "name": "Format",
+                "value": "<Format Format=\"CurrencyCustom\" Accuracy=\"2\" ThousandSeparator=\"True\"><Currency LCID=\"0\" DisplayName=\"Currency General\" Symbol=\"$\" PositivePattern=\"0\" NegativePattern=\"0\" /></Format>"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"FormatString\"]"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Product",
+        "lineageTag": "6037da56-845c-4690-897a-2f36c9d7aeb3",
+        "columns": [
+          {
+            "name": "ProductKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductKey",
+            "formatString": "0",
+            "lineageTag": "533122a3-ce18-489d-a9ea-fe62df03009d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "ProductSubcategoryKey",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "ProductSubcategoryKey",
+            "lineageTag": "a2dd40c8-e120-434f-a87d-92bf5ca41f38",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Product Name",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Product Name",
+            "lineageTag": "49098ad3-fdb3-4909-a775-f1ba5e2e3278",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Color",
+            "dataType": "string",
+            "sourceColumn": "Color",
+            "lineageTag": "5b2bb2dc-299e-4362-aa89-4d8e3041310e",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Subcategory",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": [
+              "",
+              "VAR subcat =",
+              "    RELATED ( 'Subcategory'[Subcategory Name])",
+              "RETURN",
+              "    IF ( ISBLANK ( subcat ), \"NA\", subcat )"
+            ],
+            "lineageTag": "e5d6f68f-bbcd-4041-b981-74c2074e60c2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "type": "calculated",
+            "name": "Category",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "expression": [
+              "",
+              "VAR cat =",
+              "    RELATED ( 'Product Category'[Product Category] )",
+              "RETURN",
+              "    IF ( ISBLANK ( cat ), \"NA\", cat )"
+            ],
+            "lineageTag": "d7e7c3e5-139c-4fac-b226-6665161d3f17",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Product-df5c4016-c6eb-4e90-9f39-b91c6405f418",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(excelfilename), null, true),",
+                "    pbi_Product_Sheet = Source{[Item=\"pbi_Product\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(pbi_Product_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductKey\", Int64.Type}, {\"ProductSubcategoryKey\", type any}, {\"EnglishProductName\", type text}, {\"Color\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"EnglishProductName\", \"Product Name\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Category Hierarchy",
+            "lineageTag": "0a7446ba-7a3e-4ce0-899a-e7b3a9f95498",
+            "levels": [
+              {
+                "name": "Category",
+                "ordinal": 0,
+                "column": "Category",
+                "lineageTag": "620e0091-a925-4d68-aa95-d273f361e983"
+              },
+              {
+                "name": "Subcategory",
+                "ordinal": 1,
+                "column": "Subcategory",
+                "lineageTag": "fceaa43c-9ff7-47ce-95f7-6a18ac4d9c73"
+              },
+              {
+                "name": "Product Name",
+                "ordinal": 2,
+                "column": "Product Name",
+                "lineageTag": "fced05ec-3d00-438e-9e71-24bb0d6dfee6"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Product Category",
+        "isHidden": true,
+        "lineageTag": "6e677499-eaae-4359-99fc-0cbca971624d",
+        "columns": [
+          {
+            "name": "ProductCategoryKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "ProductCategoryKey",
+            "formatString": "0",
+            "lineageTag": "5b5ac92e-313f-40f4-89bc-7c9bf55c9970",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Product Category",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "Product Category",
+            "lineageTag": "8377ffff-c55d-4590-91cb-cce8ee3cb179",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Product Category-7f90719d-3235-4b7d-9f6b-35e87b3dd396",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(excelfilename), null, true),",
+                "    pbi_ProductCategory_Sheet = Source{[Item=\"pbi_ProductCategory\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(pbi_ProductCategory_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"ProductCategoryKey\", Int64.Type}, {\"EnglishProductCategoryName\", type text}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"EnglishProductCategoryName\", \"Product Category\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          },
+          {
+            "name": "PBI_ChangedProperties",
+            "value": "[\"IsHidden\"]"
+          }
+        ]
+      },
+      {
+        "name": "Sales Territory",
+        "lineageTag": "c81784c0-76dc-4211-a737-907b7f77e73d",
+        "columns": [
+          {
+            "name": "SalesTerritoryKey",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "SalesTerritoryKey",
+            "formatString": "0",
+            "lineageTag": "5b68ee47-e958-425b-a740-62e674744b57",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "name": "Sales Region",
+            "dataType": "string",
+            "sourceColumn": "Sales Region",
+            "lineageTag": "970750fe-7584-4e40-a17e-11fd90f22202",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "name": "Sales Country",
+            "dataType": "string",
+            "sourceColumn": "Sales Country",
+            "lineageTag": "f1373e2d-f687-47ea-a4ba-15c6576c390d",
+            "dataCategory": "County",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DataCategory\"]"
+              }
+            ]
+          },
+          {
+            "name": "Sales Continent",
+            "dataType": "string",
+            "sourceColumn": "Sales Continent",
+            "lineageTag": "f0edaaaf-8980-48c3-9cf0-e7974b8299df",
+            "dataCategory": "Continent",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"DataCategory\"]"
+              }
+            ]
+          },
+          {
+            "name": "FlagUrl",
+            "dataType": "string",
+            "sourceColumn": "FlagUrl",
+            "lineageTag": "023bf422-dadc-44cf-bfde-db253bdaf5c4",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Sales Territory-8f948595-8515-4382-a6f2-79b8676d8f22",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Excel.Workbook(File.Contents(excelfilename), null, true),",
+                "    pbi_SalesTerritory_Sheet = Source{[Item=\"pbi_SalesTerritory\",Kind=\"Sheet\"]}[Data],",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(pbi_SalesTerritory_Sheet, [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"SalesTerritoryKey\", Int64.Type}, {\"SalesTerritoryAlternateKey\", Int64.Type}, {\"SalesTerritoryRegion\", type text}, {\"SalesTerritoryCountry\", type text}, {\"SalesTerritoryGroup\", type text}, {\"FlagUrl\", type text}}),",
+                "    #\"Removed Other Columns\" = Table.SelectColumns(#\"Changed Type\",{\"SalesTerritoryKey\", \"SalesTerritoryRegion\", \"SalesTerritoryCountry\", \"SalesTerritoryGroup\", \"FlagUrl\"}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Removed Other Columns\",{{\"SalesTerritoryRegion\", \"Sales Region\"}, {\"SalesTerritoryCountry\", \"Sales Country\"}, {\"SalesTerritoryGroup\", \"Sales Continent\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Data Refresh",
+        "lineageTag": "3282f6a6-b56b-47a3-9cb4-4ad626ae5441",
+        "columns": [
+          {
+            "name": "DateTime",
+            "dataType": "string",
+            "sourceColumn": "DateTime",
+            "lineageTag": "d6f85bbd-41a1-4f71-b269-098d08ec72bd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              }
+            ]
+          },
+          {
+            "name": "Date",
+            "dataType": "dateTime",
+            "sourceColumn": "Date",
+            "formatString": "dddd\\, mmmm d\\, yyyy",
+            "lineageTag": "e8f4c5e9-07e6-4a40-92da-424820965fe7",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Date"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongDate\" FormatString=\"dddd, MMMM d, yyyy\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "name": "Time",
+            "dataType": "dateTime",
+            "sourceColumn": "Time",
+            "formatString": "h:nn:ss AM/PM",
+            "lineageTag": "def12428-7776-4229-8b03-248d6044a0b2",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "UnderlyingDateTimeDataType",
+                "value": "Time"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"LongTime\" FormatString=\"h:mm:ss tt\" /></DateTimes></Format>"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Data Refresh-fd526ecc-89c4-4f31-b91f-66bfe82abcb0",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = DateTime.LocalNow(),",
+                "    #\"Converted to Table\" = #table(1, {{Source}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Converted to Table\",{{\"Column1\", \"DateTime\"}}),",
+                "    #\"Duplicated Column\" = Table.DuplicateColumn(#\"Renamed Columns\", \"DateTime\", \"DateTime - Copy\"),",
+                "    #\"Renamed Columns1\" = Table.RenameColumns(#\"Duplicated Column\",{{\"DateTime - Copy\", \"Date\"}}),",
+                "    #\"Extracted Date\" = Table.TransformColumns(#\"Renamed Columns1\",{{\"Date\", DateTime.Date, type date}}),",
+                "    #\"Duplicated Column1\" = Table.DuplicateColumn(#\"Extracted Date\", \"DateTime\", \"DateTime - Copy\"),",
+                "    #\"Renamed Columns2\" = Table.RenameColumns(#\"Duplicated Column1\",{{\"DateTime - Copy\", \"Time\"}}),",
+                "    #\"Extracted Time\" = Table.TransformColumns(#\"Renamed Columns2\",{{\"Time\", DateTime.Time, type time}})",
+                "in",
+                "    #\"Extracted Time\""
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ]
+      },
+      {
+        "name": "Calendar",
+        "lineageTag": "4ab781bd-6115-4d1f-a5bb-aab3d3e8cbd4",
+        "dataCategory": "Time",
+        "columns": [
+          {
+            "type": "calculatedTableColumn",
+            "name": "Date",
+            "dataType": "dateTime",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isKey": true,
+            "sourceColumn": "[Date]",
+            "formatString": "General Date",
+            "lineageTag": "de3dedce-ba09-4915-9b7b-5a608458a4cd",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"DateTimeGeneralPattern\"><DateTimes><DateTime LCID=\"1033\" Group=\"GeneralDateTimeLong\" FormatString=\"G\" /></DateTimes></Format>"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Year",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Year]",
+            "formatString": "0",
+            "lineageTag": "29410f49-5e71-4433-87a5-dc4d9714866f",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "MonthNumber",
+            "dataType": "int64",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[MonthNumber]",
+            "formatString": "0",
+            "lineageTag": "71a13675-2b20-471f-aa76-635e9334f27d",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"NumberWhole\" Accuracy=\"0\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Month",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Month]",
+            "sortByColumn": "MonthNumber",
+            "lineageTag": "a8f745e3-fb63-4f41-8b83-42fa7b5c8699",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"SortByColumn\"]"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Quarter",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Quarter]",
+            "sortByColumn": "QuaterNumber",
+            "lineageTag": "3d0699da-be98-4b99-9e61-6126b4cdf309",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"SortByColumn\"]"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "QuaterNumber",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[QuaterNumber]",
+            "lineageTag": "725bdb06-0134-4207-9b1c-c370636e109c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "MonthYearNumber",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "isHidden": true,
+            "sourceColumn": "[MonthYearNumber]",
+            "lineageTag": "c6167160-8997-4eeb-a91a-a208b3ac336c",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"IsHidden\"]"
+              }
+            ]
+          },
+          {
+            "type": "calculatedTableColumn",
+            "name": "Month Year",
+            "dataType": "string",
+            "isNameInferred": true,
+            "isDataTypeInferred": true,
+            "sourceColumn": "[Month Year]",
+            "sortByColumn": "MonthYearNumber",
+            "lineageTag": "f9954862-4190-4dce-b11e-8285dc091df3",
+            "summarizeBy": "none",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "Format",
+                "value": "<Format Format=\"Text\" />"
+              },
+              {
+                "name": "PBI_ChangedProperties",
+                "value": "[\"SortByColumn\"]"
+              }
+            ]
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Calendar-85d005fc-1aba-4b1c-b6ff-dd641cc33ae7",
+            "mode": "import",
+            "source": {
+              "type": "calculated",
+              "expression": [
+                "",
+                "VAR _calendar =",
+                "    CALENDAR ( \"1/1/2011\", \"12/31/2021\" )",
+                "RETURN",
+                "    ADDCOLUMNS (",
+                "        _calendar,",
+                "        \"Year\", YEAR ( [Date] ),",
+                "        \"MonthNumber\", MONTH ( [Date] ),",
+                "        \"Month\", FORMAT ( [Date], \"mmmm\" ),",
+                "        \"Quarter\", \"QTR \" & FORMAT ( [Date], \"Q\" ),",
+                "        \"QuaterNumber\", FORMAT ( [Date], \"Q\" ),",
+                "        \"MonthYearNumber\", FORMAT([Date], \"yy mm\"),",
+                "        \"Month Year\", FORMAT([Date], \"mmm yyyy\")",
+                "    )"
+              ]
+            }
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Calendar Hierarchy",
+            "lineageTag": "096caa70-da14-4075-b693-10c1a40025d6",
+            "levels": [
+              {
+                "name": "Year",
+                "ordinal": 0,
+                "column": "Year",
+                "lineageTag": "23cc6b2e-18d9-4afd-8dea-4abd2f461552"
+              },
+              {
+                "name": "Quarter",
+                "ordinal": 1,
+                "column": "Quarter",
+                "lineageTag": "91b4eae7-fba5-4419-a51a-0ff533b5e643"
+              },
+              {
+                "name": "Month",
+                "ordinal": 2,
+                "column": "Month",
+                "lineageTag": "4b7a6313-a583-4e6f-b8ca-839fd566daf3"
+              }
+            ]
+          }
+        ],
+        "annotations": [
+          {
+            "name": "PBI_Id",
+            "value": "c5a2bc476cbb454a850f6cda7ef2d3f5"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "162359b9-d67f-41e3-a597-af66dbecc9e3",
+        "fromTable": "Subcategory",
+        "fromColumn": "ProductCategoryKey",
+        "toTable": "Product Category",
+        "toColumn": "ProductCategoryKey"
+      },
+      {
+        "name": "b9e2d177-e829-4097-adb8-18c27b9a033b",
+        "fromTable": "Customer",
+        "fromColumn": "GeographyKey",
+        "toTable": "Geography",
+        "toColumn": "Geography Key"
+      },
+      {
+        "name": "c8a2dd2b-6760-4838-a94f-beeba925697f",
+        "fromTable": "Internet Sales",
+        "fromColumn": "CustomerKey",
+        "toTable": "Customer",
+        "toColumn": "CustomerKey"
+      },
+      {
+        "name": "0af770c8-0818-4589-ab53-6c511f0fb9af",
+        "fromTable": "Employee",
+        "fromColumn": "SalesTerritoryKey",
+        "toTable": "Sales Territory",
+        "toColumn": "SalesTerritoryKey"
+      },
+      {
+        "name": "6032b348-0cb4-46bc-a556-cf9989f6e4f8",
+        "fromTable": "Internet Sales",
+        "fromColumn": "SalesTerritoryKey",
+        "toTable": "Sales Territory",
+        "toColumn": "SalesTerritoryKey"
+      },
+      {
+        "name": "6c03cc1c-b7fc-40cd-906e-537efa6610dd",
+        "fromTable": "Internet Sales",
+        "fromColumn": "ProductKey",
+        "toTable": "Product",
+        "toColumn": "ProductKey"
+      },
+      {
+        "name": "9ce5202b-3c67-45b0-8f8d-54a41b6c554b",
+        "fromTable": "Product",
+        "fromColumn": "ProductSubcategoryKey",
+        "toTable": "Subcategory",
+        "toColumn": "ProductSubcategoryKey"
+      },
+      {
+        "name": "5f32c07b-a640-441b-a5bf-6ad24232a045",
+        "fromTable": "Internet Sales",
+        "fromColumn": "Order Date",
+        "toTable": "Calendar",
+        "toColumn": "Date"
+      },
+      {
+        "name": "0656333f-3700-4d6c-8af6-3af5538365bb",
+        "fromTable": "Internet Sales",
+        "fromColumn": "Ship Date",
+        "toTable": "Calendar",
+        "toColumn": "Date",
+        "isActive": false
+      }
+    ],
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "Version": "1.0.0",
+            "Language": "en-US",
+            "DynamicImprovement": "HighConfidence"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "expressions": [
+      {
+        "name": "csvfilename",
+        "kind": "m",
+        "expression": "\"C:\\GIAC\\Data\\csv\\Subcategory.csv\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "lineageTag": "8f11b67f-53a8-4d0a-afb6-10cd69e0ba4e",
+        "annotations": [
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ]
+      },
+      {
+        "name": "excelfilename",
+        "kind": "m",
+        "expression": "\"C:\\GIAC\\Data\\Excel\\AdventureWorks.xlsx\" meta [IsParameterQuery=true, Type=\"Text\", IsParameterQueryRequired=true]",
+        "lineageTag": "5d1d1f7c-7c26-4491-b765-4408f04919c3",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Text"
+          }
+        ]
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.92.706.0 (21.04)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Subcategory\",\"Geography\",\"Customer\",\"Employee\",\"Internet Sales\",\"Product\",\"Product Category\",\"Sales Territory\",\"csvfilename\",\"excelfilename\",\"Data Refresh\"]"
+      },
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "TabularEditor_SerializeOptions",
+        "value": "{\"IgnoreInferredObjects\":true,\"IgnoreInferredProperties\":true,\"IgnoreTimestamps\":true,\"SplitMultilineStrings\":true,\"PrefixFilenames\":false,\"LocalTranslations\":false,\"LocalPerspectives\":false,\"LocalRelationships\":false,\"Levels\":[\"Data Sources\",\"Perspectives\",\"Relationships\",\"Roles\",\"Tables\",\"Tables/Columns\",\"Tables/Hierarchies\",\"Tables/Measures\",\"Tables/Partitions\",\"Tables/Calculation Items\",\"Translations\"]}"
+      }
+    ]
+  }
+}
